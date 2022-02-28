@@ -36,6 +36,9 @@ import { MessagesService } from './messages/messages.service';
 import { LoadingService } from './loading/loading.service';
 import { CARSCardListComponent } from './cars-card-list/cars-card-list.component';
 import { carComponent } from './car/car.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 @NgModule({
   declarations: [
@@ -75,7 +78,10 @@ import { carComponent } from './car/car.component';
     MatSelectModule,
     MatDatepickerModule,
     MatMomentDateModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([]),
+    StoreRouterConnectingModule.forRoot()
   ],
  
   providers: [
