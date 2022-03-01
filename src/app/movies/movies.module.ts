@@ -7,11 +7,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
-import { HeroListComponent } from './hero-list/hero-list.component';
-import { HeroComponent } from './hero/hero.component';
+import { MoviesListComponent } from './movies-list/movies-list.component';
+import { MovieComponent } from './movie/movie.component';
 import { SwapiService } from './swapi.service';
 import { EffectsModule } from '@ngrx/effects';
-import { HeroesEffects } from './heroes.effects';
+import { MoviesEffects } from './movies.effects';
+import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 
 @NgModule({
   imports: [
@@ -22,17 +23,18 @@ import { HeroesEffects } from './heroes.effects';
     MatButtonModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    EffectsModule.forFeature([HeroesEffects])
+    EffectsModule.forFeature([MoviesEffects])
   ],
   declarations: [
-    HeroListComponent,
-    HeroComponent
+    MoviesListComponent,
+    MovieComponent,
+    MovieDetailComponent
   ],
   providers: [
     SwapiService
   ],
   exports: [
-    HeroListComponent
+    MoviesListComponent
   ]
 })
-export class HeroesModule {}
+export class MoviesModule {}

@@ -40,56 +40,37 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { MoviesModule } from './movies/movies.module';
+import { environment } from '../environments/environment';
+import { metaReducers, reducers } from './reducers';
+import { AppEffects } from './app.effects';
+import { CharacterDetailComponent } from './character-detail/character-detail.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    AboutComponent,
-    carComponent,
-    carDialogComponent,
-    LoginComponent,
-    partComponent,
-    SafeUrlPipe,
-    MessagesComponent,
-    searchPartsComponent,
-    LoadingComponent,
-    CARSCardListComponent
-
+    CharacterDetailComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    HttpClientModule,
-    MatMenuModule,
-    MatButtonModule,
-    MatIconModule,
-    MatCardModule,
-    MatTabsModule,
-    MatSidenavModule,
-    MatListModule,
-    MatToolbarModule,
-    MatInputModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatProgressSpinnerModule,
-    MatDialogModule,
     AppRoutingModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    MatMomentDateModule,
-    ReactiveFormsModule,
-    StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([]),
-    StoreRouterConnectingModule.forRoot()
+    MatToolbarModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    EffectsModule.forRoot([AppEffects]),
+    MoviesModule,
+    // StoreRouterConnectingModule.forRoot(),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
  
   providers: [
-    LoadingService,
-    MessagesService
+    // LoadingService,
+    // MessagesService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [carDialogComponent]
+  // entryComponents: [carDialogComponent]
 })
 export class AppModule {
 }

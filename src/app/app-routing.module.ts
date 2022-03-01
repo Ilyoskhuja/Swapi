@@ -12,21 +12,13 @@ const routes: Routes = [
     component: HomeComponent
 
   },
+  // {
+  //   path:"search-Parts",
+  //   component: searchPartsComponent
+  // },
   {
-    path:"search-Parts",
-    component: searchPartsComponent
-  },
-  {
-    path: 'about',
-    component: AboutComponent
-  },
-  {
-    path: 'CARS/:carId',
+    path: 'movie/:movieId',
     component: carComponent
-  },
-  {
-    path: 'login',
-    component: LoginComponent
   },
   {
     path: '**',

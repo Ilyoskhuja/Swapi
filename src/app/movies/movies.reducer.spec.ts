@@ -1,4 +1,4 @@
-import { reducer, initialState } from './heroes.reducer';
+import { reducer, initialState } from './movies.reducer';
 
 describe('Heroes Reducer', () => {
   describe('unknown action', () => {

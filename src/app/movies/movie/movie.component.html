@@ -1,15 +1,15 @@
-<mat-card>
+<mat-card (click)="openMoviesDetails(movie)">
   <mat-card-header>
-      <mat-card-title><strong>{{ hero.name }}</strong></mat-card-title>
+      <mat-card-title><strong>Movie: "{{ movie.title }}"</strong></mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <p>
-      Birth Date: <strong>{{ hero.birth_year }}</strong>
+    <!-- <p>
+      Director: <strong>{{ hero.director }}</strong>
     </p>
     <p>
-      Eyes:  <mat-icon [ngClass]="hero.eye_color">remove_red_eye</mat-icon>
-    </p>
-    <p>
+      Producer: <strong>{{hero.producer}}</strong>
+    </p> -->
+    <!-- <p>
       Gender: <strong>{{ hero.gender }}</strong>
     </p>
 
@@ -21,6 +21,6 @@
     </p>
     <p>
       Weight: <strong>{{ hero.mass }}kg</strong>
-    </p>
+    </p> -->
   </mat-card-content>
 </mat-card>
