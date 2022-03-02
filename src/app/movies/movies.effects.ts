@@ -3,7 +3,7 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 // import { getCurrentPage } from '../reducers/index';
 import { State } from './movies.reducer';
-import { SwapiService } from './swapi.service';
+import { MovieService } from './movie.service';
 import {
   MoviesActionTypes,
   MoviesActions,
@@ -38,5 +38,5 @@ export class MoviesEffects {
 
   constructor(private actions$: Actions,
               private store: Store<State>,
-              private service: SwapiService) {}
+              private service: MovieService) {}
 }

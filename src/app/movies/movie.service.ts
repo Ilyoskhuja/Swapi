@@ -5,15 +5,18 @@ import { forkJoin, Observable, of } from 'rxjs';
 import { Movie, MoviesResponse } from './models/movie';
 import { finalize, map, tap } from 'rxjs/operators';
 import { LoaderService } from '../loader/loader.service';
+import { Character } from '../characters/models/character';
 
 
 const FILM_HTTP_URL_LENGTH = `'https://swapi.dev/api/films/`.length;
 
 @Injectable()
-export class SwapiService {
+export class MovieService {
   private readonly baseUrl = 'https://swapi.dev/api/';
 
   filmsList: Movie[];
+  selectedFilm: Movie;
+
   constructor(private http: HttpClient,private loaderService: LoaderService) {}
 
   getMovies(): Observable<Movie[]>{
@@ -53,21 +56,23 @@ export class SwapiService {
   //   return this.http.get<MoviesResponse>(link, options);
   // }
   
-  // getFilmsByCharacter(character: Character) {
-  //   return forkJoin(character.films.map(filmUrl => {
-  //       this.loaderService.startLoading();
-  //       return this.http.get<Movie>(filmUrl)
-  //         .pipe(map(film => {
-  //           film.id = this.getFilmId(film.url);
-  //           return film;
-  //         }), finalize(() => this.loaderService.finishLoading()));
-  //     }
-  //   ));
-  // }
+  getFilmsByCharacter(character: Character) {
+    return forkJoin(character.films.map(filmUrl => {
+        this.loaderService.startLoading();
+        return this.http.get<Movie>(filmUrl)
+          .pipe(map(film => {
+            film.id = this.getFilmId(film.url);
+            return film;
+          }), finalize(() => this.loaderService.finishLoading()));
+      }
+    ));
+  }
 
-  getFilm(filmId: number): Observable<Movie> {
+  getFilm(movieId: number): Observable<Movie> {
     this.loaderService.startLoading();
-    return this.http.get<Movie>(`${this.baseUrl}/films/${filmId}`)
+    console.log("getFilm filmId:",movieId);
+    
+    return this.http.get<Movie>(`${this.baseUrl}films/${movieId}`)
       .pipe(map(film => {
         film.id = this.getFilmId(film.url);
         return film;

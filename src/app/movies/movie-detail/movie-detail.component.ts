@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Movie } from '../models/movie';
+import { MovieService } from '../movie.service';
 
 @Component({
   selector: 'movie-detail',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./movie-detail.component.scss']
 })
 export class MovieDetailComponent implements OnInit {
-
-  constructor() { }
+  film: Movie;
+  constructor(public MovieService: MovieService) { }
 
   ngOnInit(): void {
+    console.log("ngOnInit");
+    
+    this.film = this.MovieService.selectedFilm;
   }
 
 }

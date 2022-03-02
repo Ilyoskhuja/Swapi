@@ -23,7 +23,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {HttpClientModule} from '@angular/common/http';
-import {carDialogComponent} from './car-dialog/car-dialog.component';
+// import {carDialogComponent} from './car-dialog/car-dialog.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatMomentDateModule} from '@angular/material-moment-adapter';
 import {LoginComponent} from './login/login.component';
@@ -31,10 +31,10 @@ import {partComponent} from './part/part.component';
 import {SafeUrlPipe} from './common/safe-url.pipe';
 import {MessagesComponent} from './messages/messages.component';
 import {searchPartsComponent} from './search-Parts/search-Parts.component';
-import { LoadingComponent } from './loading/loading.component';
+// import { LoadingComponent } from './loading/loading.component';
 import { MessagesService } from './messages/messages.service';
-import { LoadingService } from './loading/loading.service';
-import { CARSCardListComponent } from './cars-card-list/cars-card-list.component';
+// import { LoadingService } from './loading/loading.service';
+// import { CARSCardListComponent } from './cars-card-list/cars-card-list.component';
 import { carComponent } from './car/car.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -45,12 +45,17 @@ import { MoviesModule } from './movies/movies.module';
 import { environment } from '../environments/environment';
 import { metaReducers, reducers } from './reducers';
 import { AppEffects } from './app.effects';
-import { CharacterDetailComponent } from './character-detail/character-detail.component';
+import { CharactersListComponent } from './characters/characters-list/characters-list.component';
+import { CharactersListTableComponent } from './characters/characters-list-table/characters-list-table.component';
+import { CharacterDetailsComponent } from './characters/character-details/character-details.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    CharacterDetailComponent
+    CharactersListComponent,
+    CharactersListTableComponent,
+    CharacterDetailsComponent,
   ],
   imports: [
     BrowserModule,

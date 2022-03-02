@@ -1,3 +1,5 @@
+import { Character } from "../../characters/models/character";
+
 export interface Movie {
   id: number;
   title:string;
@@ -6,11 +8,12 @@ export interface Movie {
   director:string;
   producer:string;
   realease_date:string;
-  characters:[];
-  planets:[];
-  starships:[];
-  vehicles:[];
-  species:[];
+  characters: string[];
+  charactersData: Character[];
+  planets:string[];
+  starships:string[];
+  vehicles:string[];
+  species:string[];
   created: string;
   edited: string;
   url:string

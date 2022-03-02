@@ -1,12 +1,12 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {Car} from '../model/car';
+// import {Car} from '../model/car';
 import {interval, noop, Observable, of, throwError, timer} from 'rxjs';
 // import {catchError, delay, delayWhen, filter, finalize, map, retryWhen, shareReplay, tap} from 'rxjs/operators';
 
 // import { CARSService } from '../services/CARS.service';
 // import { LoadingService } from '../loading/loading.service';
 // import { MessagesService } from '../messages/messages.service';
-import { CARSStore } from '../services/CARS.store';
+// import { CARSStore } from '../services/CARS.store';
 
 
 @Component({
@@ -17,14 +17,14 @@ import { CARSStore } from '../services/CARS.store';
 })
 export class HomeComponent implements OnInit {
 
-  bCARS$:Observable<Car[]>;
+  // bCARS$:Observable<Car[]>;
 
-  aCARS$:Observable<Car[]>;
+  // aCARS$:Observable<Car[]>;
 
 
   constructor(
     // private CARSService: CARSService,
-    private CARSStore:CARSStore,
+    // private CARSStore:CARSStore,
     // private loadingService: LoadingService,
     // private messagesService: MessagesService
   ) {
@@ -52,8 +52,8 @@ export class HomeComponent implements OnInit {
     // this.beginnerCARS$ = loadCARS$.pipe(
     //   map(CARS => CARS.filter(car => car.category == "BEGINNER"))
     // )
-    this.bCARS$ = this.CARSStore.filterByCategory("B");
-    this.aCARS$ = this.CARSStore.filterByCategory("A");
+    // this.bCARS$ = this.CARSStore.filterByCategory("B");
+    // this.aCARS$ = this.CARSStore.filterByCategory("A");
     // this.advancedCARS$ = loadCARS$.pipe(
     //   map(CARS => CARS.filter(car => car.category == "ADVANCED"))
     // )

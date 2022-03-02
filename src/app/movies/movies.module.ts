@@ -9,7 +9,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { MoviesListComponent } from './movies-list/movies-list.component';
 import { MovieComponent } from './movie/movie.component';
-import { SwapiService } from './swapi.service';
+import { MovieService } from './movie.service';
 import { EffectsModule } from '@ngrx/effects';
 import { MoviesEffects } from './movies.effects';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
@@ -31,7 +31,7 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
     MovieDetailComponent
   ],
   providers: [
-    SwapiService
+    MovieService
   ],
   exports: [
     MoviesListComponent

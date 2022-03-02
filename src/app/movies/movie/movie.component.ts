@@ -1,6 +1,8 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Movie } from '../models/movie';
+import { MovieService } from '../movie.service';
 
 @Component({
   selector: 'swapi-movie',
@@ -10,9 +12,15 @@ import { Movie } from '../models/movie';
 })
 export class MovieComponent {
   @Input() movie: Movie;
+  constructor(public MovieService: MovieService,
+    private router: Router){}
 
-  openMoviesDetails(movie){
+  openMoviesDetails(movie:Movie){
     console.log("openMoviesDetails:",movie);
+    this.MovieService.selectedFilm = movie;
+  console.log("movie.id:",movie.id);
+  
     
+    this.router.navigate(['/movies', movie.id]);
   }
 }
