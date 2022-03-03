@@ -21,6 +21,7 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     FormsModule,
     MatCardModule,
+    
     MatButtonModule,
     MatIconModule,
     MatProgressSpinnerModule,
@@ -30,7 +31,7 @@ import { RouterModule } from '@angular/router';
   declarations: [
     MoviesListComponent,
     MovieComponent,
-    MovieDetailComponent
+    MovieDetailComponent,
   ],
   providers: [
     MovieService

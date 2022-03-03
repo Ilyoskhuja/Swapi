@@ -15,6 +15,8 @@ export class CharacterDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.character = this.charactersService.selectedCharacter;
+    console.log("CharacterDetailsComponent");
+  
   }
 
 }

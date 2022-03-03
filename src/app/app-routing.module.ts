@@ -30,7 +30,7 @@ const routes: Routes = [
   },
   
   {path: 'characters', component: CharactersListComponent},
-  {path: 'characters/:characterId', component: CharacterDetailsComponent, canActivate: [CanActivateCharacterDetailsService]},
+  {path: 'characters/:characterId', component: CharacterDetailsComponent},
   {
     path: '**',
     redirectTo: '/movies',

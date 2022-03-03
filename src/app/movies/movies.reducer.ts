@@ -2,6 +2,7 @@ import { Action } from '@ngrx/store';
 import { MoviesActions, MoviesActionTypes, Pagination } from './movies.actions';
 import { Movie } from './models/movie';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Character } from '../characters/models/character';
 
 export interface State {
   isLoading: boolean;
@@ -9,6 +10,9 @@ export interface State {
   data: Movie[] | null;
   selectedMovieCharacters: [] | null;
   selectedMovie:Movie| null;
+  selectedCharacterMovies: [] | null;
+  selectedCharacter: Character | null;
+
   // next: string | null;
   // previous: string | null;
   
@@ -19,7 +23,12 @@ export const initialState: State = {
   error: null,
   data: [],
   selectedMovieCharacters:[],
-  selectedMovie:null,
+  selectedMovie: null,
+
+  selectedCharacter: null,
+  selectedCharacterMovies:[]
+  
+  
   // next: null,
   // previous: null,
 
@@ -72,6 +81,31 @@ export function reducer(state = initialState, action: MoviesActions): State {
           isLoading: false,
           error: action.payload
         };
+    
+    case MoviesActionTypes.FetchCharacter:
+      return {
+        ...state,
+        isLoading: true,
+        error: null
+      };
+
+    case MoviesActionTypes.FetchCharacterSuccess:
+      return {
+        ...state,
+        isLoading: false,
+        selectedCharacter: action.payload,
+        // next: action.payload.next,
+        // previous: action.payload.previous
+      };
+
+    case MoviesActionTypes.FetchCharacterError:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload
+      };
+
+    
     case MoviesActionTypes.FetchMovieCharacters:
       return {
         ...state,

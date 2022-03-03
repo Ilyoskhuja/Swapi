@@ -55,36 +55,37 @@
     <p class="mat-body">{{film.opening_crawl}}</p>
     <mat-grid-list cols="5" rowHeight="100px">
       <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <span class="mat-body-strong">Episode</span>
+        <span class="mat-body-strong"> Episode: </span>
         <span class="mat-body">{{film.episode_id}}</span>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <span class="mat-body-strong">Release Date</span>
+        <span class="mat-body-strong"> Release Date: </span>
         <span class="mat-body">{{film.release_date}}</span>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <span class="mat-body-strong">Director</span>
+        <span class="mat-body-strong"> Director: </span>
         <span class="mat-body">{{film.director}}</span>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <span class="mat-body-strong">Producer</span>
+        <span class="mat-body-strong"> Producer: </span>
         <span class="mat-body">{{film.producer}}</span>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <span class="mat-body-strong"># of Characters</span>
+        <span class="mat-body-strong"> # of Characters: </span>
         <span class="mat-body">{{film.characters.length}}</span>
       </mat-grid-tile>
     </mat-grid-list>
     <h3 class="mat-h3">Characters</h3>
-    <div class="table-container">
-      <div *ngFor="let item of film.characters">
-       {{item}}
+    <div class="table-container" >
+      <div *ngFor="let item of characters$ | async">
+      <span (click)="openCharacterDetail(item)">{{item.name}}</span> 
       </div>
-      <app-characters-list-table [characters]="film.characters"></app-characters-list-table>
+      <!-- <div *ngIf="(characters$ | async) as ch"></div> -->
+      <!-- <app-characters-list-table [characters]="(characters$ | async)"></app-characters-list-table> -->
     </div>
   </mat-card-content>
 </mat-card>
-<swapi-movie *ngFor="let movie of film$ | async"
-           [movie]="movie"></swapi-movie>
+<!-- <swapi-movie *ngFor="let movie of film$ | async"
+           [movie]="movie"></swapi-movie> -->
 
   

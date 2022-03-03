@@ -7,6 +7,7 @@ export const enum MoviesActionTypes {
   FetchMovies = '[Movies] Fetch Movies',
   FetchMoviesSuccess = '[Movies] Load Movies Success',
   FetchMoviesError = '[Movies] Load Movies Error',
+ 
   ChangePage = '[Movies] Change page',
   FetchMovieCharacters = '[Movie] Fetch Movie Characters',
   FetchMovieCharactersSuccess = `[Movie] Load Movie Characters Success`,
@@ -14,6 +15,11 @@ export const enum MoviesActionTypes {
   FetchMovie = '[Movie] Fetch Movie ',
   FetchMovieSuccess = `[Movie] Load Movie Success`,
   FetchMovieError = '[Movie] Load Movie Error',
+
+  FetchCharacter = '[Character] Fetch Character ',
+  FetchCharacterSuccess = `[Character] Load Character Success`,
+  FetchCharacterError = '[Character] Load Character Error',
+
 }
 
 export const enum Pagination {
@@ -44,8 +50,8 @@ export class FetchMovie implements Action {
   }
 }
 
-export class FetchMovieSuccess implements Action {
-  readonly type = MoviesActionTypes.FetchMovieSuccess;
+export class FetchCharacterSuccess implements Action {
+  readonly type = MoviesActionTypes.FetchCharacterSuccess;
 
   constructor(public payload: any) {
     console.log("FetchMovieSuccess");
@@ -53,12 +59,34 @@ export class FetchMovieSuccess implements Action {
   }
 }
 
-export class FetchMovieError implements Action {
-  readonly type = MoviesActionTypes.FetchMovieError;
+export class FetchCharacterError implements Action {
+  readonly type = MoviesActionTypes.FetchCharacterError;
 
   constructor(public payload: HttpErrorResponse) {}
 }
 
+export class FetchCharacter implements Action {
+  readonly type = MoviesActionTypes.FetchCharacter;
+  constructor() {
+    console.log("*************FetchMovie*************");
+
+  }
+}
+
+export class FetchMovieSuccess implements Action {
+  readonly type = MoviesActionTypes.FetchMovieSuccess;
+
+  constructor(public payload: any) {
+    console.log("FetchMovieSuccess");
+
+  }
+}
+
+export class FetchMovieError implements Action {
+  readonly type = MoviesActionTypes.FetchMovieError;
+
+  constructor(public payload: HttpErrorResponse) { }
+}
 
 export class FetchMovieCharacters implements Action {
   readonly type = MoviesActionTypes.FetchMovieCharacters;
@@ -96,4 +124,7 @@ export type MoviesActions = FetchMovieCharacters
 | FetchMovie 
 | FetchMovieSuccess 
 | FetchMovieError 
+  | FetchCharacter
+  | FetchCharacterSuccess
+  | FetchCharacterError   
 | ChangePage;

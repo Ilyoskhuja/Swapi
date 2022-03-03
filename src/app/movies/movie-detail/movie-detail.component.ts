@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 import { getMovie, getMovieCharacters } from '../../reducers';
 import { map } from 'rxjs/operators';
 import { FetchMovie, FetchMovieCharacters } from '../movies.actions';
+import { Character } from '../../characters/models/character';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'movie-detail',
@@ -15,17 +17,29 @@ import { FetchMovie, FetchMovieCharacters } from '../movies.actions';
 })
 export class MovieDetailComponent implements OnInit {
   film$: Observable<Movie>=this.store.pipe(select(getMovie));
+  characters$: Observable<Character[]> = this.store.pipe(select(getMovieCharacters));
   constructor(public MovieService: MovieService,
-    private store: Store<State>) { }
+    private store: Store<State>,
+    private router: Router) { }
 
   ngOnInit(): void {
     console.log("ngOnInit");
     
   
-   
     
+
     this.store.dispatch(new FetchMovie());
+    
+    this.store.dispatch(new FetchMovieCharacters());
     console.log("---------this.film:-----------", this.film$);
+   this.characters$.forEach(element => {
+     console.log("characters:",element);
+     
+   });
+  }
+  openCharacterDetail(character: Character) {
+    console.log("character:",character);
+    this.router.navigate(['/characters/', character.id]);
   }
 
 }

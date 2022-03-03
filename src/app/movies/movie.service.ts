@@ -16,6 +16,7 @@ export class MovieService {
 
   filmsList: Movie[];
   selectedFilm: Movie;
+  selectedCharacter: Character;
 
   constructor(private http: HttpClient,private loaderService: LoaderService) {}
 

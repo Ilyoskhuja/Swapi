@@ -14,7 +14,9 @@ export class CharactersListTableComponent {
   tableColumns = ['name', 'birth_year', 'height', 'mass', 'hair_color', 'skin_color', 'eye_color'];
 
   constructor(public charactersService: CharactersService,
-              private router: Router) {
+    private router: Router) {
+    console.log("CharactersListTableComponent");
+    
   }
 
   showDetails(character: Character) {
