@@ -22,7 +22,7 @@ const routes: Routes = [
   {
     path: 'movies/:movieId',
     component: MovieDetailComponent,
-   canActivate: [CanActivateMovieDetailsService]
+  //  canActivate: [CanActivateMovieDetailsService]
   },
   {
     path: 'mov',

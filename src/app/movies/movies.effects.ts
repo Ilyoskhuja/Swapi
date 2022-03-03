@@ -11,7 +11,9 @@ import {
   FetchMoviesSuccess,
   FetchMoviesError,
   FetchMovieCharactersSuccess,
-  FetchMovieCharactersError
+  FetchMovieCharactersError,
+  FetchMovieError,
+  FetchMovieSuccess
 } from './movies.actions';
 import { Observable, of } from 'rxjs';
 import { map, switchMap, catchError, withLatestFrom } from 'rxjs/operators';
@@ -34,7 +36,7 @@ export class MoviesEffects {
     );
 
   @Effect()
-  fetchMovie$: Observable<MoviesActions> = this.actions$
+  fetchCharacters$: Observable<MoviesActions> = this.actions$
     .pipe(
       ofType(MoviesActionTypes.FetchMovieCharacters),
       withLatestFrom(this.store),
@@ -42,6 +44,7 @@ export class MoviesEffects {
         this.charactersService.getCharactersByFilm(this.service.selectedFilm).pipe(
           catchError(err => of(new FetchMovieCharactersError(err))),
           map(data =>
+
             new FetchMovieCharactersSuccess(data)
             // (characters: Movie['charactersData']) => {
             // console.log("characters:", characters);
@@ -54,6 +57,28 @@ export class MoviesEffects {
             // }
           )
         )));
+
+        @Effect()
+        fetchMovie$: Observable<MoviesActions> = this.actions$
+          .pipe(
+            ofType(MoviesActionTypes.FetchMovie),
+            withLatestFrom(this.store),
+            switchMap(([action, state]) =>
+              this.service.getFilm(this.service.selectedFilm.id).pipe(
+                catchError(err => of(new FetchMovieError(err))),
+                map(data =>
+                  new FetchMovieSuccess(data)
+                  // (characters: Movie['charactersData']) => {
+                  // console.log("characters:", characters);
+                  // // this.movieService.selectedFilm.charactersData=[];
+                  // console.log("this.movieService.selectedFilm.charactersData:", this.movieService.selectedFilm.charactersData);
+      
+      
+                  // //  this.movieService.selectedFilm.charactersData = characters;
+                  // return true;
+                  // }
+                )
+              )));     
         // this.service.getMovies().pipe(
         //   map(data =>
         //     new FetchMovieCharactersSuccess(data)

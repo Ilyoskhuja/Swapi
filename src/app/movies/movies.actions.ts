@@ -11,6 +11,9 @@ export const enum MoviesActionTypes {
   FetchMovieCharacters = '[Movie] Fetch Movie Characters',
   FetchMovieCharactersSuccess = `[Movie] Load Movie Characters Success`,
   FetchMovieCharactersError = '[Movie] Load Movie Characters Error',
+  FetchMovie = '[Movie] Fetch Movie ',
+  FetchMovieSuccess = `[Movie] Load Movie Success`,
+  FetchMovieError = '[Movie] Load Movie Error',
 }
 
 export const enum Pagination {
@@ -33,6 +36,28 @@ export class FetchMoviesError implements Action {
 
   constructor(public payload: HttpErrorResponse) {}
 }
+export class FetchMovie implements Action {
+  readonly type = MoviesActionTypes.FetchMovie;
+  constructor(){
+    console.log("*************FetchMovie*************");
+    
+  }
+}
+
+export class FetchMovieSuccess implements Action {
+  readonly type = MoviesActionTypes.FetchMovieSuccess;
+
+  constructor(public payload: any) {
+    console.log("FetchMovieSuccess");
+    
+  }
+}
+
+export class FetchMovieError implements Action {
+  readonly type = MoviesActionTypes.FetchMovieError;
+
+  constructor(public payload: HttpErrorResponse) {}
+}
 
 
 export class FetchMovieCharacters implements Action {
@@ -41,8 +66,11 @@ export class FetchMovieCharacters implements Action {
 
 export class FetchMovieCharactersSuccess implements Action {
   readonly type = MoviesActionTypes.FetchMovieCharactersSuccess;
-
-  constructor(public payload: any) { }
+   
+   
+  constructor(public payload: any) { 
+    console.log("FetchMovieCharactersSuccess");
+  }
 }
 
 export class FetchMovieCharactersError implements Action {
@@ -59,4 +87,13 @@ export class ChangePage implements Action {
   constructor(public payload: Pagination) {}
 }
 
-export type MoviesActions = FetchMovieCharacters | FetchMovieCharactersSuccess | FetchMovieCharactersError | FetchMovies | FetchMoviesSuccess | FetchMoviesError | ChangePage;
+export type MoviesActions = FetchMovieCharacters 
+| FetchMovieCharactersSuccess
+| FetchMovieCharactersError 
+| FetchMovies 
+| FetchMoviesSuccess 
+| FetchMoviesError 
+| FetchMovie 
+| FetchMovieSuccess 
+| FetchMovieError 
+| ChangePage;

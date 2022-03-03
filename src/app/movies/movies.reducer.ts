@@ -7,7 +7,8 @@ export interface State {
   isLoading: boolean;
   error: HttpErrorResponse | null;
   data: Movie[] | null;
-  selectedMovieCharacters: Movie['charactersData'] | null;
+  selectedMovieCharacters: [] | null;
+  selectedMovie:Movie| null;
   // next: string | null;
   // previous: string | null;
   
@@ -17,7 +18,8 @@ export const initialState: State = {
   isLoading: false,
   error: null,
   data: [],
-  selectedMovieCharacters:null,
+  selectedMovieCharacters:[],
+  selectedMovie:null,
   // next: null,
   // previous: null,
 
@@ -48,6 +50,28 @@ export function reducer(state = initialState, action: MoviesActions): State {
         isLoading: false,
         error: action.payload
       };
+      case MoviesActionTypes.FetchMovie:
+        return {
+          ...state,
+          isLoading: true,
+          error: null
+        };
+  
+      case MoviesActionTypes.FetchMovieSuccess:
+        return {
+          ...state,
+          isLoading: false,
+          selectedMovie: action.payload,
+          // next: action.payload.next,
+          // previous: action.payload.previous
+        };
+  
+      case MoviesActionTypes.FetchMovieError:
+        return {
+          ...state,
+          isLoading: false,
+          error: action.payload
+        };
     case MoviesActionTypes.FetchMovieCharacters:
       return {
         ...state,

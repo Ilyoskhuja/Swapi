@@ -3,13 +3,14 @@ import {
   OnInit,
   ChangeDetectionStrategy
 } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { State } from '../movies.reducer';
 import { FetchMovies, ChangePage, Pagination } from '../movies.actions';
 import {
   getMovies,
   getIsLoading,
+
   // getIsFirstPage,
   // getIsLastPage
 } from '../../reducers/index';
@@ -22,7 +23,7 @@ import { Movie } from '../models/movie';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MoviesListComponent implements OnInit {
-  movies$: Observable<Movie[]>;
+  movies$: Observable<Movie[]> = this.store.pipe(select(getMovies));
   isFirst$: Observable<boolean>;
   isLast$: Observable<boolean>;
   isLoading$: Observable<boolean>;
@@ -30,8 +31,7 @@ export class MoviesListComponent implements OnInit {
   constructor(private store: Store<State>) {}
 
   ngOnInit() {
-    // this.movies$ = this.store.select(getMovies);
-    // console.log("---movies---:",this.movies$);
+    console.log("---movies---:",this.movies$);
     
     // this.isFirst$ = this.store.select(getIsFirstPage);
     // this.isLast$ = this.store.select(getIsLastPage);

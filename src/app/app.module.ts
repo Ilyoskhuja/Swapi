@@ -62,6 +62,7 @@ import { CharacterDetailsComponent } from './characters/character-details/charac
     BrowserAnimationsModule,
     AppRoutingModule,
     MatToolbarModule,
+    MatTableModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([AppEffects]),

@@ -52,6 +52,8 @@ export class CharactersService {
     }));
   }
 
+  
+
   getCharacter(characterId: number): Observable<Character> {
     this.loaderService.startLoading();
     return this.http.get<Character>(`https://swapi.dev/api/people/${characterId}`)

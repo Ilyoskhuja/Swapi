@@ -72,8 +72,9 @@ export class MovieService {
     this.loaderService.startLoading();
     console.log("getFilm filmId:",movieId);
     
-    return this.http.get<Movie>(`${this.baseUrl}films/${movieId}`)
+    return this.http.get<Movie>(`${this.baseUrl}/films/${movieId}`)
       .pipe(map(film => {
+        
         film.id = this.getFilmId(film.url);
         return film;
       }), finalize(() => this.loaderService.finishLoading()));

@@ -9,7 +9,7 @@ import { CharactersService} from '../characters/characters.service';
 import { Character } from '../characters/models/character';
 import { Movie } from './models/movie';
 import { MovieService } from './movie.service';
-import { FetchMovieCharacters } from './movies.actions';
+import { FetchMovie, FetchMovieCharacters } from './movies.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -52,7 +52,8 @@ export class CanActivateMovieDetailsService implements CanActivate {
 
   getCharactersForSelecterFilm(): Observable<boolean> {
     console.log("-----this.store.select('selectedMovie'):-------", this.store.select('selectedMovieCharacters'));
-    this.store.dispatch(new FetchMovieCharacters());
+    this.store.dispatch(new FetchMovie());
+    // return true;
     // this.store.select('selectedMovie')
     return !!this.movieService.selectedFilm.charactersData
       ? of(true)

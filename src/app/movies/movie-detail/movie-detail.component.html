@@ -1,44 +1,90 @@
-<h1>HIdsasd</h1>
-<!-- <a mat-button>
-    <!-- [routerLink]="['/films']" ->
-    <mat-icon>arrow_back</mat-icon>
-    Back To Films List
-  </a>
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>
-        {{film.title}}
-      </mat-card-title>
-      <mat-card-subtitle>{{film.director}}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <!-- <p class="mat-body">{{film.opening_crawl}}</p>
-      <mat-grid-list cols="5" rowHeight="100px">
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <span class="mat-body-strong">Episode</span>
-          <span class="mat-body">{{film.episode_id}}</span>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <span class="mat-body-strong">Release Date</span>
-          <span class="mat-body">{{film.release_date}}</span>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <span class="mat-body-strong">Director</span>
-          <span class="mat-body">{{film.director}}</span>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <span class="mat-body-strong">Producer</span>
-          <span class="mat-body">{{film.producer}}</span>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <span class="mat-body-strong"># of Characters</span>
-          <span class="mat-body">{{film.characters.length}}</span>
-        </mat-grid-tile>
-      </mat-grid-list> ->
-      <h3 class="mat-h3">Characters</h3>
-      <div class="table-container">
-        <!-- <app-characters-list-table [characters]="film.charactersData"></app-characters-list-table> ->
+<!-- <h1>HIdsasd</h1> -->
+<!-- <div *ngIf="film$ | async as p"
+           >
+          <h2>{{p}}</h2>
+          </div>
+          <div *ngFor="let movie of (film$ | async) "
+          [movie]="movie" >
+          <mat-card (click)="openMoviesDetails(movie)">
+            <mat-card-header>
+                <mat-card-title><strong>Movie: "{{ movie.title }}"</strong></mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <!-- <p>
+                Director: <strong>{{ hero.director }}</strong>
+              </p>
+              <p>
+                Producer: <strong>{{hero.producer}}</strong>
+              </p> -->
+              <!-- <p>
+                Gender: <strong>{{ hero.gender }}</strong>
+              </p>
+          
+              <p>
+                Hair:  <strong>{{ hero.hair_color }}</strong>
+              </p>
+              <p>
+                Height: <strong>{{ hero.height }}cm</strong>
+              </p>
+              <p>
+                Weight: <strong>{{ hero.mass }}kg</strong>
+              </p> ->
+            </mat-card-content>
+          </mat-card>
+        </div> -->
+<!-- <div class="loader__bg" *ngIf="isLoading$ | async">
+  <mat-spinner
+    class="loader"
+    color="accent"
+    mode="indeterminate"
+    [diameter]="40"
+    [value]="25"></mat-spinner>
+</div> -->
+<a mat-button [routerLink]="['/movies']">
+  <mat-icon>arrow_back</mat-icon>
+  Back To Films List
+</a>
+<mat-card *ngIf="(film$ | async) as film">
+  <mat-card-header>
+    <mat-card-title>
+     {{film.title }}
+    </mat-card-title>
+    <mat-card-subtitle>{{film.director}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p class="mat-body">{{film.opening_crawl}}</p>
+    <mat-grid-list cols="5" rowHeight="100px">
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <span class="mat-body-strong">Episode</span>
+        <span class="mat-body">{{film.episode_id}}</span>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <span class="mat-body-strong">Release Date</span>
+        <span class="mat-body">{{film.release_date}}</span>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <span class="mat-body-strong">Director</span>
+        <span class="mat-body">{{film.director}}</span>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <span class="mat-body-strong">Producer</span>
+        <span class="mat-body">{{film.producer}}</span>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <span class="mat-body-strong"># of Characters</span>
+        <span class="mat-body">{{film.characters.length}}</span>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <h3 class="mat-h3">Characters</h3>
+    <div class="table-container">
+      <div *ngFor="let item of film.characters">
+       {{item}}
       </div>
-    </mat-card-content>
-  </mat-card>
-   -->
+      <app-characters-list-table [characters]="film.characters"></app-characters-list-table>
+    </div>
+  </mat-card-content>
+</mat-card>
+<swapi-movie *ngFor="let movie of film$ | async"
+           [movie]="movie"></swapi-movie>
+
+  

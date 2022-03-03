@@ -13,6 +13,7 @@ import { MovieService } from './movie.service';
 import { EffectsModule } from '@ngrx/effects';
 import { MoviesEffects } from './movies.effects';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
     MatButtonModule,
     MatIconModule,
     MatProgressSpinnerModule,
+    RouterModule,
     EffectsModule.forFeature([MoviesEffects])
   ],
   declarations: [
