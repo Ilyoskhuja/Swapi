@@ -58,11 +58,15 @@ export class MovieService {
   // }
   
   getFilmsByCharacter(character: Character) {
+    console.log("bbbbbbb-----character----bbbbbbb:", character);
+    
     return forkJoin(character.films.map(filmUrl => {
         this.loaderService.startLoading();
         return this.http.get<Movie>(filmUrl)
           .pipe(map(film => {
             film.id = this.getFilmId(film.url);
+            console.log("???????getFilmsByCharacter???????:", );
+            
             return film;
           }), finalize(() => this.loaderService.finishLoading()));
       }

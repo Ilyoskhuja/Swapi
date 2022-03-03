@@ -15,7 +15,9 @@ import {
   FetchMovieError,
   FetchMovieSuccess,
   FetchCharacterError,
-  FetchCharacterSuccess
+  FetchCharacterSuccess,
+  FetchCharacterMoviesSuccess,
+  FetchCharacterMoviesError
 } from './movies.actions';
 import { Observable, of } from 'rxjs';
 import { map, switchMap, catchError, withLatestFrom } from 'rxjs/operators';
@@ -62,17 +64,17 @@ export class MoviesEffects {
           )
       ));
   @Effect()
-  fetchCharactersMovies$: Observable<MoviesActions> = this.actions$
+  fetchCharacterMovies$: Observable<MoviesActions> = this.actions$
     .pipe(
-      ofType(MoviesActionTypes.FetchMovieCharacters),
+      ofType(MoviesActionTypes.FetchCharacterMovies),
       withLatestFrom(this.store),
       switchMap(([action, state]) =>
 
-        this.charactersService.getCharactersByFilm(this.service.selectedFilm).pipe(
-          catchError(err => of(new FetchMovieCharactersError(err))),
+        this.service.getFilmsByCharacter(this.service.selectedCharacter).pipe(
+          catchError(err => of(new FetchCharacterMoviesError(err))),
           map(data =>
 
-            new FetchMovieCharactersSuccess(data)
+            new FetchCharacterMoviesSuccess(data)
             // (characters: Movie['charactersData']) => {
             // console.log("characters:", characters);
             // // this.movieService.selectedFilm.charactersData=[];
@@ -123,7 +125,7 @@ export class MoviesEffects {
       ofType(MoviesActionTypes.FetchCharacter),
       withLatestFrom(this.store),
       switchMap(([action, state]) =>
-        this.service.getFilm(this.service.selectedCharacter.id).pipe(
+        this.charactersService.getCharacter(this.service.selectedCharacter.id).pipe(
           catchError(err => of(new FetchCharacterError(err))),
           map(data =>
 

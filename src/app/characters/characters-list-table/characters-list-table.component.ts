@@ -20,7 +20,11 @@ export class CharactersListTableComponent {
   }
 
   showDetails(character: Character) {
+    console.log("-00000---character----00000---:", character);
+    
     this.charactersService.selectedCharacter = character;
+    console.log(" this.charactersService.selectedCharacter :", this.charactersService.selectedCharacter );
+    
     this.router.navigate(['/characters', character.id]);
   }
 

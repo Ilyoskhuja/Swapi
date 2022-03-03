@@ -23,6 +23,8 @@ export const getMovies = createSelector(getMoviesState, state => state.data);
 export const getIsLoading = createSelector(getMoviesState, state => state.isLoading);
 export const getMovieCharacters = createSelector(getMoviesState, state => state.selectedMovieCharacters);
 export const getMovie = createSelector(getMoviesState, state => state.selectedMovie);
+export const getCharacterMovies = createSelector(getMoviesState, state => state.selectedCharacterMovies);
+export const getCharacter = createSelector(getMoviesState, state => state.selectedCharacter);
 
 // export const getCurrentPage = createSelector(getMoviesState, state => state.page);
 // export const getIsFirstPage = createSelector(getMoviesState, state => !state.previous);

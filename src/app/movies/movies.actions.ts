@@ -7,7 +7,7 @@ export const enum MoviesActionTypes {
   FetchMovies = '[Movies] Fetch Movies',
   FetchMoviesSuccess = '[Movies] Load Movies Success',
   FetchMoviesError = '[Movies] Load Movies Error',
- 
+
   ChangePage = '[Movies] Change page',
   FetchMovieCharacters = '[Movie] Fetch Movie Characters',
   FetchMovieCharactersSuccess = `[Movie] Load Movie Characters Success`,
@@ -19,6 +19,10 @@ export const enum MoviesActionTypes {
   FetchCharacter = '[Character] Fetch Character ',
   FetchCharacterSuccess = `[Character] Load Character Success`,
   FetchCharacterError = '[Character] Load Character Error',
+
+  FetchCharacterMovies = '[Character] Fetch Character Movies ',
+  FetchCharacterMoviesSuccess = `[Character] Load Character Movies Success`,
+  FetchCharacterMoviesError = '[Character] Load Character Movies Error',
 
 }
 
@@ -34,19 +38,19 @@ export class FetchMovies implements Action {
 export class FetchMoviesSuccess implements Action {
   readonly type = MoviesActionTypes.FetchMoviesSuccess;
 
-  constructor(public payload: Movie[]) {}
+  constructor(public payload: Movie[]) { }
 }
 
 export class FetchMoviesError implements Action {
   readonly type = MoviesActionTypes.FetchMoviesError;
 
-  constructor(public payload: HttpErrorResponse) {}
+  constructor(public payload: HttpErrorResponse) { }
 }
 export class FetchMovie implements Action {
   readonly type = MoviesActionTypes.FetchMovie;
-  constructor(){
+  constructor() {
     console.log("*************FetchMovie*************");
-    
+
   }
 }
 
@@ -55,24 +59,45 @@ export class FetchCharacterSuccess implements Action {
 
   constructor(public payload: any) {
     console.log("FetchMovieSuccess");
-    
+
   }
 }
 
 export class FetchCharacterError implements Action {
   readonly type = MoviesActionTypes.FetchCharacterError;
 
-  constructor(public payload: HttpErrorResponse) {}
+  constructor(public payload: HttpErrorResponse) { }
 }
 
 export class FetchCharacter implements Action {
   readonly type = MoviesActionTypes.FetchCharacter;
   constructor() {
-    console.log("*************FetchMovie*************");
+    console.log("*************FetchCharacter*************");
+
+  }
+}
+export class FetchCharacterMoviesSuccess implements Action {
+  readonly type = MoviesActionTypes.FetchCharacterMoviesSuccess;
+
+  constructor(public payload: any) {
+    console.log("```````````````FetchCharacterMoviesSuccess````````````````");
 
   }
 }
 
+export class FetchCharacterMoviesError implements Action {
+  readonly type = MoviesActionTypes.FetchCharacterMoviesError;
+
+  constructor(public payload: HttpErrorResponse) { }
+}
+
+export class FetchCharacterMovies implements Action {
+  readonly type = MoviesActionTypes.FetchCharacterMovies;
+  constructor() {
+    console.log("*************FetchCharacter*************");
+
+  }
+}
 export class FetchMovieSuccess implements Action {
   readonly type = MoviesActionTypes.FetchMovieSuccess;
 
@@ -94,9 +119,9 @@ export class FetchMovieCharacters implements Action {
 
 export class FetchMovieCharactersSuccess implements Action {
   readonly type = MoviesActionTypes.FetchMovieCharactersSuccess;
-   
-   
-  constructor(public payload: any) { 
+
+
+  constructor(public payload: any) {
     console.log("FetchMovieCharactersSuccess");
   }
 }
@@ -112,19 +137,22 @@ export class FetchMovieCharactersError implements Action {
 export class ChangePage implements Action {
   readonly type = MoviesActionTypes.ChangePage;
 
-  constructor(public payload: Pagination) {}
+  constructor(public payload: Pagination) { }
 }
 
-export type MoviesActions = FetchMovieCharacters 
-| FetchMovieCharactersSuccess
-| FetchMovieCharactersError 
-| FetchMovies 
-| FetchMoviesSuccess 
-| FetchMoviesError 
-| FetchMovie 
-| FetchMovieSuccess 
-| FetchMovieError 
+export type MoviesActions = FetchMovieCharacters
+  | FetchMovieCharactersSuccess
+  | FetchMovieCharactersError
+  | FetchMovies
+  | FetchMoviesSuccess
+  | FetchMoviesError
+  | FetchMovie
+  | FetchMovieSuccess
+  | FetchMovieError
   | FetchCharacter
   | FetchCharacterSuccess
-  | FetchCharacterError   
-| ChangePage;
+  | FetchCharacterError
+  | FetchCharacterMovies
+  | FetchCharacterMoviesSuccess
+  | FetchCharacterMoviesError
+  | ChangePage;

@@ -18,7 +18,7 @@ import { Router } from '@angular/router';
 export class MovieDetailComponent implements OnInit {
   film$: Observable<Movie>=this.store.pipe(select(getMovie));
   characters$: Observable<Character[]> = this.store.pipe(select(getMovieCharacters));
-  constructor(public MovieService: MovieService,
+  constructor(public movieService: MovieService,
     private store: Store<State>,
     private router: Router) { }
 
@@ -38,7 +38,8 @@ export class MovieDetailComponent implements OnInit {
    });
   }
   openCharacterDetail(character: Character) {
-    console.log("character:",character);
+    console.log("character:", character);
+    this.movieService.selectedCharacter = character;
     this.router.navigate(['/characters/', character.id]);
   }
 

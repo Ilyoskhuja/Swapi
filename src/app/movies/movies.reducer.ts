@@ -104,7 +104,29 @@ export function reducer(state = initialState, action: MoviesActions): State {
         isLoading: false,
         error: action.payload
       };
+    
+    case MoviesActionTypes.FetchCharacterMovies:
+      return {
+        ...state,
+        isLoading: true,
+        error: null
+      };
 
+    case MoviesActionTypes.FetchCharacterMoviesSuccess:
+      return {
+        ...state,
+        isLoading: false,
+        selectedCharacterMovies: action.payload,
+        // next: action.payload.next,
+        // previous: action.payload.previous
+      };
+
+    case MoviesActionTypes.FetchCharacterMoviesError:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload
+      };
     
     case MoviesActionTypes.FetchMovieCharacters:
       return {
