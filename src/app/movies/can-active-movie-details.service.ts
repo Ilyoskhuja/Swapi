@@ -1,11 +1,15 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
+import { Store } from '@ngrx/store';
+
+import { State } from './movies.reducer';
 import {Observable, of} from 'rxjs';
 import {catchError, map, mergeMap} from 'rxjs/operators';
 import { CharactersService} from '../characters/characters.service';
 import { Character } from '../characters/models/character';
 import { Movie } from './models/movie';
 import { MovieService } from './movie.service';
+import { FetchMovieCharacters } from './movies.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +17,8 @@ import { MovieService } from './movie.service';
 export class CanActivateMovieDetailsService implements CanActivate {
   constructor(private movieService: MovieService,
               private charactersService: CharactersService,
-              private router: Router) {
+    private router: Router,
+    private store: Store<State>) {
                 console.log("ActivateMovieDetailsService:");
                 
   }
@@ -46,6 +51,9 @@ export class CanActivateMovieDetailsService implements CanActivate {
   }
 
   getCharactersForSelecterFilm(): Observable<boolean> {
+    console.log("-----this.store.select('selectedMovie'):-------", this.store.select('selectedMovieCharacters'));
+    this.store.dispatch(new FetchMovieCharacters());
+    // this.store.select('selectedMovie')
     return !!this.movieService.selectedFilm.charactersData
       ? of(true)
       : this.charactersService.getCharactersByFilm(this.movieService.selectedFilm).pipe(
@@ -55,7 +63,7 @@ export class CanActivateMovieDetailsService implements CanActivate {
         }),
         map((characters: Character[]) => {
            console.log("characters:",characters);
-           this.movieService.selectedFilm.charactersData=[];
+          // this.movieService.selectedFilm.charactersData=[];
            console.log("this.movieService.selectedFilm.charactersData:",this.movieService.selectedFilm.charactersData);
            
            

@@ -9,10 +9,14 @@ import {
   MoviesActions,
   FetchMovies,
   FetchMoviesSuccess,
-  FetchMoviesError
+  FetchMoviesError,
+  FetchMovieCharactersSuccess,
+  FetchMovieCharactersError
 } from './movies.actions';
 import { Observable, of } from 'rxjs';
 import { map, switchMap, catchError, withLatestFrom } from 'rxjs/operators';
+import { CharactersService } from '../characters/characters.service';
+import { Movie } from './models/movie';
 
 @Injectable()
 export class MoviesEffects {
@@ -30,6 +34,35 @@ export class MoviesEffects {
     );
 
   @Effect()
+  fetchMovie$: Observable<MoviesActions> = this.actions$
+    .pipe(
+      ofType(MoviesActionTypes.FetchMovieCharacters),
+      withLatestFrom(this.store),
+      switchMap(([action, state]) =>
+        this.charactersService.getCharactersByFilm(this.service.selectedFilm).pipe(
+          catchError(err => of(new FetchMovieCharactersError(err))),
+          map(data =>
+            new FetchMovieCharactersSuccess(data)
+            // (characters: Movie['charactersData']) => {
+            // console.log("characters:", characters);
+            // // this.movieService.selectedFilm.charactersData=[];
+            // console.log("this.movieService.selectedFilm.charactersData:", this.movieService.selectedFilm.charactersData);
+
+
+            // //  this.movieService.selectedFilm.charactersData = characters;
+            // return true;
+            // }
+          )
+        )));
+        // this.service.getMovies().pipe(
+        //   map(data =>
+        //     new FetchMovieCharactersSuccess(data)
+        //   ),
+        //   catchError(err => of(new FetchMovieCharactersError(err)))
+        // )
+    //   )
+    // );
+  @Effect()
   paginate$: Observable<MoviesActions> = this.actions$
     .pipe(
       ofType(MoviesActionTypes.ChangePage),
@@ -38,5 +71,6 @@ export class MoviesEffects {
 
   constructor(private actions$: Actions,
               private store: Store<State>,
-              private service: MovieService) {}
+    private service: MovieService,
+    private charactersService: CharactersService) { }
 }

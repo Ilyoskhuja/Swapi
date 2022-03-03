@@ -12,7 +12,7 @@ const FILM_HTTP_URL_LENGTH = `'https://swapi.dev/api/films/`.length;
 
 @Injectable()
 export class MovieService {
-  private readonly baseUrl = 'https://swapi.dev/api/';
+  private readonly baseUrl = 'https://swapi.dev/api';
 
   filmsList: Movie[];
   selectedFilm: Movie;
@@ -44,7 +44,7 @@ export class MovieService {
           finalize(() => this.loaderService.finishLoading()));
     }
   }
-
+ 
   // searchForMovie(lookup: string): Observable<MoviesResponse> {
   //   const link = `${this.baseUrl}films/`;
   //   const options = {

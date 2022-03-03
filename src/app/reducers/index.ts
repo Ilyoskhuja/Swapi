@@ -21,6 +21,8 @@ export const metaReducers: MetaReducer<State>[] = !environment.production ? [] :
 export const getMoviesState = createFeatureSelector<fromMovies.State>('movies');
 export const getMovies = createSelector(getMoviesState, state => state.data);
 export const getIsLoading = createSelector(getMoviesState, state => state.isLoading);
+export const getMovieCharacters = createSelector(getMoviesState, state => state.selectedMovieCharacters);
+
 // export const getCurrentPage = createSelector(getMoviesState, state => state.page);
 // export const getIsFirstPage = createSelector(getMoviesState, state => !state.previous);
 // export const getIsLastPage = createSelector(getMoviesState, state => !state.next);
