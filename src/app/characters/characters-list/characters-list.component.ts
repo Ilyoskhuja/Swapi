@@ -27,7 +27,7 @@ export class CharactersListComponent implements OnInit, OnDestroy {
 
   pageData(event: PageEvent) {
     this.subscription = this.charactersService.getCharactersList(event.pageIndex + 1).subscribe(data => {
-      console.log("data:",data);
+      // console.log("data:",data);
       
       // this.characters = data;
     });

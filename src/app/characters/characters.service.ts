@@ -24,7 +24,7 @@ export class CharactersService {
     this.loaderService.startLoading();
     return this.http.get<Character>(`https://swapi.dev/api/people/?page=${pageNumber}`)
       .pipe(map((characters => {
-        console.log("--characters--:",characters);
+        // console.log("--characters--:",characters);
         
           // characters.forEach(character => {
           //   character.id = this.getCharacterId(character.url);
@@ -35,18 +35,18 @@ export class CharactersService {
   }
 
   getCharactersByFilm(film: Movie) {
-    console.log("getCharactersByFilm");
+    // console.log("getCharactersByFilm");
     
     return forkJoin(film.characters.map(characterUrl => {
       this.loaderService.startLoading();
-      console.log("loaderService");
+      // console.log("loaderService");
       
       return this.http.get<Character>(characterUrl)
         .pipe(map(character => {
           
           character.id = this.getCharacterId(character.url);
           
-          console.log("get character",character);
+          // console.log("get character",character);
           return character;
         }), finalize(() => this.loaderService.finishLoading()))
     }));

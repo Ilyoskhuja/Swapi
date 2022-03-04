@@ -1,4 +1,5 @@
-<swapi-movie *ngFor="let movie of movies$ | async; trackBy: trackByUrl"
+
+<swapi-movie class="flex-container" *ngFor="let movie of movies$ | async; trackBy: trackByUrl"
            [movie]="movie"></swapi-movie>
 
 <div class="loader__bg" *ngIf="isLoading$ | async">
@@ -10,14 +11,3 @@
     [value]="25"></mat-spinner>
 </div>
 
-<!-- <section class="full-width pager">
-  <button mat-raised-button
-          color="accent"
-          [class.invisible]="isFirst$ | async"
-          (click)="prev()">PREVIOUS</button>
-
-  <button mat-raised-button
-          color="accent"
-          [class.invisible]="isLast$ | async"
-          (click)="next()">NEXT</button>
-</section> -->

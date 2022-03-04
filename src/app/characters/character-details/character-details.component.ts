@@ -22,17 +22,17 @@ export class CharacterDetailsComponent implements OnInit {
 
   ngOnInit() {
     // this.character = this.charactersService.selectedCharacter;
-    console.log("CharacterDetailsComponent");
+    // console.log("CharacterDetailsComponent");
     this.store.dispatch(new FetchCharacter());
 
     this.store.dispatch(new FetchCharacterMovies());
-    console.log("---------this.film:-----------", this.films$);
+    // console.log("---------this.film:-----------", this.films$);
 
   }
   openfilm(movie: Movie) {
-    console.log("openMoviesDetails:", movie);
+    // console.log("openMoviesDetails:", movie);
     this.movieService.selectedFilm = movie;
-    console.log("movie.id:", movie.id);
+    // console.log("movie.id:", movie.id);
 
 
     this.router.navigate(['/movies', movie.id]);

@@ -49,7 +49,7 @@ export class FetchMoviesError implements Action {
 export class FetchMovie implements Action {
   readonly type = MoviesActionTypes.FetchMovie;
   constructor() {
-    console.log("*************FetchMovie*************");
+    // console.log("*************FetchMovie*************");
 
   }
 }
@@ -58,7 +58,7 @@ export class FetchCharacterSuccess implements Action {
   readonly type = MoviesActionTypes.FetchCharacterSuccess;
 
   constructor(public payload: any) {
-    console.log("FetchMovieSuccess");
+    // console.log("FetchMovieSuccess");
 
   }
 }
@@ -72,7 +72,7 @@ export class FetchCharacterError implements Action {
 export class FetchCharacter implements Action {
   readonly type = MoviesActionTypes.FetchCharacter;
   constructor() {
-    console.log("*************FetchCharacter*************");
+    // console.log("*************FetchCharacter*************");
 
   }
 }
@@ -80,7 +80,7 @@ export class FetchCharacterMoviesSuccess implements Action {
   readonly type = MoviesActionTypes.FetchCharacterMoviesSuccess;
 
   constructor(public payload: any) {
-    console.log("```````````````FetchCharacterMoviesSuccess````````````````");
+    // console.log("```````````````FetchCharacterMoviesSuccess````````````````");
 
   }
 }
@@ -94,7 +94,7 @@ export class FetchCharacterMoviesError implements Action {
 export class FetchCharacterMovies implements Action {
   readonly type = MoviesActionTypes.FetchCharacterMovies;
   constructor() {
-    console.log("*************FetchCharacter*************");
+    // console.log("*************FetchCharacter*************");
 
   }
 }
@@ -102,7 +102,7 @@ export class FetchMovieSuccess implements Action {
   readonly type = MoviesActionTypes.FetchMovieSuccess;
 
   constructor(public payload: any) {
-    console.log("FetchMovieSuccess");
+    // console.log("FetchMovieSuccess");
 
   }
 }
@@ -122,7 +122,7 @@ export class FetchMovieCharactersSuccess implements Action {
 
 
   constructor(public payload: any) {
-    console.log("FetchMovieCharactersSuccess");
+    // console.log("FetchMovieCharactersSuccess");
   }
 }
 

@@ -9,7 +9,6 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {HomeComponent} from './home/home.component';
-import {AboutComponent} from './about/about.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -26,16 +25,13 @@ import {HttpClientModule} from '@angular/common/http';
 // import {carDialogComponent} from './car-dialog/car-dialog.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatMomentDateModule} from '@angular/material-moment-adapter';
-import {LoginComponent} from './login/login.component';
-import {partComponent} from './part/part.component';
-import {SafeUrlPipe} from './common/safe-url.pipe';
-import {MessagesComponent} from './messages/messages.component';
-import {searchPartsComponent} from './search-Parts/search-Parts.component';
+
+// import {MessagesComponent} from './messages/messages.component';
 // import { LoadingComponent } from './loading/loading.component';
-import { MessagesService } from './messages/messages.service';
+// import { MessagesService } from './messages/messages.service';
 // import { LoadingService } from './loading/loading.service';
 // import { CARSCardListComponent } from './cars-card-list/cars-card-list.component';
-import { carComponent } from './car/car.component';
+
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
@@ -63,6 +59,11 @@ import { CharacterDetailsComponent } from './characters/character-details/charac
     AppRoutingModule,
     MatToolbarModule,
     MatTableModule,
+    
+    MatCardModule,
+    
+    MatButtonModule,
+    MatIconModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([AppEffects]),
@@ -72,8 +73,6 @@ import { CharacterDetailsComponent } from './characters/character-details/charac
   ],
  
   providers: [
-    // LoadingService,
-    // MessagesService
   ],
   bootstrap: [AppComponent],
   // entryComponents: [carDialogComponent]

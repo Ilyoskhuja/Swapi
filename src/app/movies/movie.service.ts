@@ -58,14 +58,14 @@ export class MovieService {
   // }
   
   getFilmsByCharacter(character: Character) {
-    console.log("bbbbbbb-----character----bbbbbbb:", character);
+    // console.log("bbbbbbb-----character----bbbbbbb:", character);
     
     return forkJoin(character.films.map(filmUrl => {
         this.loaderService.startLoading();
         return this.http.get<Movie>(filmUrl)
           .pipe(map(film => {
             film.id = this.getFilmId(film.url);
-            console.log("???????getFilmsByCharacter???????:", );
+            // console.log("???????getFilmsByCharacter???????:", );
             
             return film;
           }), finalize(() => this.loaderService.finishLoading()));
@@ -75,7 +75,7 @@ export class MovieService {
 
   getFilm(movieId: number): Observable<Movie> {
     this.loaderService.startLoading();
-    console.log("getFilm filmId:",movieId);
+    // console.log("getFilm filmId:",movieId);
     
     return this.http.get<Movie>(`${this.baseUrl}/films/${movieId}`)
       .pipe(map(film => {

@@ -31,7 +31,7 @@ export class MoviesListComponent implements OnInit {
   constructor(private store: Store<State>) {}
 
   ngOnInit() {
-    console.log("---movies---:",this.movies$);
+    // console.log("---movies---:",this.movies$);
     
     // this.isFirst$ = this.store.select(getIsFirstPage);
     // this.isLast$ = this.store.select(getIsLastPage);

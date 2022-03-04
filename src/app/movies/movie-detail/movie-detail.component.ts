@@ -23,7 +23,6 @@ export class MovieDetailComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    console.log("ngOnInit");
     
   
     
@@ -31,9 +30,9 @@ export class MovieDetailComponent implements OnInit {
     this.store.dispatch(new FetchMovie());
     
     this.store.dispatch(new FetchMovieCharacters());
-    console.log("---------this.film:-----------", this.film$);
+    // console.log("---------this.film:-----------", this.film$);
    this.characters$.forEach(element => {
-     console.log("characters:",element);
+    //  console.log("characters:",element);
      
    });
   }

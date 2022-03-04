@@ -1,46 +1,5 @@
-<!-- <h1>HIdsasd</h1> -->
-<!-- <div *ngIf="film$ | async as p"
-           >
-          <h2>{{p}}</h2>
-          </div>
-          <div *ngFor="let movie of (film$ | async) "
-          [movie]="movie" >
-          <mat-card (click)="openMoviesDetails(movie)">
-            <mat-card-header>
-                <mat-card-title><strong>Movie: "{{ movie.title }}"</strong></mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <!-- <p>
-                Director: <strong>{{ hero.director }}</strong>
-              </p>
-              <p>
-                Producer: <strong>{{hero.producer}}</strong>
-              </p> -->
-              <!-- <p>
-                Gender: <strong>{{ hero.gender }}</strong>
-              </p>
-          
-              <p>
-                Hair:  <strong>{{ hero.hair_color }}</strong>
-              </p>
-              <p>
-                Height: <strong>{{ hero.height }}cm</strong>
-              </p>
-              <p>
-                Weight: <strong>{{ hero.mass }}kg</strong>
-              </p> ->
-            </mat-card-content>
-          </mat-card>
-        </div> -->
-<!-- <div class="loader__bg" *ngIf="isLoading$ | async">
-  <mat-spinner
-    class="loader"
-    color="accent"
-    mode="indeterminate"
-    [diameter]="40"
-    [value]="25"></mat-spinner>
-</div> -->
-<a mat-button [routerLink]="['/movies']">
+
+<a mat-button [routerLink]="['/movies']" class="backButton">
   <mat-icon>arrow_back</mat-icon>
   Back To Films List
 </a>
@@ -75,10 +34,10 @@
         <span class="mat-body">{{film.characters.length}}</span>
       </mat-grid-tile>
     </mat-grid-list>
-    <h3 class="mat-h3">Characters</h3>
+    <h3 class="mat-h3">Characters:</h3>
     <div class="table-container" >
       <div *ngFor="let item of characters$ | async">
-      <span (click)="openCharacterDetail(item)">{{item.name}}</span> 
+      <span (click)="openCharacterDetail(item)" class="characterHover">{{item.name}}</span> 
       </div>
       <!-- <div *ngIf="(characters$ | async) as ch"></div> -->
       <!-- <app-characters-list-table [characters]="(characters$ | async)"></app-characters-list-table> -->

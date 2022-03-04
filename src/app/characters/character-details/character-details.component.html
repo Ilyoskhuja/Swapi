@@ -1,50 +1,6 @@
-<!-- <a mat-button [routerLink]="['/characters']">
+
+<a mat-button [routerLink]="['/movies']" class="backButton">
   <mat-icon>arrow_back</mat-icon>
-  Back To Characters List
-</a>
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>
-      {{character.name}}
-    </mat-card-title>
-    <mat-card-subtitle>{{character.gender}}</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <mat-grid-list cols="7" rowHeight="100px">
-      <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <span class="mat-body-strong">Height</span>
-        <span class="mat-body">{{character.height}}</span>
-      </mat-grid-tile>
-      <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <span class="mat-body-strong">Mass</span>
-        <span class="mat-body">{{character.mass}}</span>
-      </mat-grid-tile>
-      <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <span class="mat-body-strong">Hair Color</span>
-        <span class="mat-body">{{character.hair_color}}</span>
-      </mat-grid-tile>
-      <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <span class="mat-body-strong">Skin Color</span>
-        <span class="mat-body">{{character.skin_color}}</span>
-      </mat-grid-tile>
-      <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <span class="mat-body-strong">Eye Color</span>
-        <span class="mat-body">{{character.eye_color}}</span>
-      </mat-grid-tile>
-      <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <span class="mat-body-strong">Birth Year</span>
-        <span class="mat-body">{{character.birth_year}}</span>
-      </mat-grid-tile>
-      <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <span class="mat-body-strong"># of Films</span>
-        <span class="mat-body">{{character.films.length}}</span>
-      </mat-grid-tile>
-    </mat-grid-list>
-    <!-- <app-films-list-table [films]="character.filmsData"></app-films-list-table> ->
-  </mat-card-content>
-</mat-card> -->
-<a mat-button [routerLink]="['/movies']">
-  <!-- <mat-icon>arrow_back</mat-icon> -->
   Back To Films List
 </a>
 <mat-card *ngIf="(character$ | async) as chac">
@@ -52,37 +8,34 @@
     <mat-card-title>
       {{chac.name }}
     </mat-card-title>
-    <!-- <mat-card-subtitle>{{film.director}}</mat-card-subtitle> -->
+    <mat-card-subtitle>Gender :{{ chac.gender}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <!-- <p class="mat-body">{{film.opening_crawl}}</p> -->
     <mat-grid-list cols="5" rowHeight="100px">
       <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <span class="mat-body-strong"> Episode: </span>
+        <span class="mat-body-strong"> hair color: {{chac.hair_color}}</span>
         <!-- <span class="mat-body">{{film.episode_id}}</span> -->
       </mat-grid-tile>
       <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <span class="mat-body-strong"> Release Date: </span>
+        <span class="mat-body-strong"> height: {{chac.height}} </span>
         <!-- <span class="mat-body">{{film.release_date}}</span> -->
       </mat-grid-tile>
       <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <span class="mat-body-strong"> Director: </span>
+        <span class="mat-body-strong"> mass: {{chac.mass}} </span>
         <!-- <span class="mat-body">{{film.director}}</span> -->
       </mat-grid-tile>
       <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <span class="mat-body-strong"> Producer: </span>
+        <span class="mat-body-strong"> skin color: {{chac.skin_color}} </span>
         <!-- <span class="mat-body">{{film.producer}}</span> -->
       </mat-grid-tile>
-      <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <span class="mat-body-strong"> # of Characters: </span>
-        <!-- <span class="mat-body">{{film.characters.length}}</span> -->
-      </mat-grid-tile>
+     
     </mat-grid-list>
-    <h3 class="mat-h3">Characters</h3>
+    <h3 class="mat-h3" >Films:</h3>
     <div class="table-container">
       <div *ngFor="let item of films$ | async; trackBy: trackByUrl"
            [item]="item">
-        <span (click)="openfilm(item)">{{item.title}}</span>
+        <span (click)="openfilm(item)"  class="filmsHover">{{item.title}}</span>
       </div>
       <!-- <div *ngIf="(characters$ | async) as ch"></div> -->
       <!-- <app-characters-list-table [characters]="(characters$ | async)"></app-characters-list-table> -->

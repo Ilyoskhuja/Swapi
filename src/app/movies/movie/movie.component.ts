@@ -16,9 +16,9 @@ export class MovieComponent {
     private router: Router){}
 
   openMoviesDetails(movie:Movie){
-    console.log("openMoviesDetails:",movie);
+    // console.log("openMoviesDetails:",movie);
     this.MovieService.selectedFilm = movie;
-  console.log("movie.id:",movie.id);
+  // console.log("movie.id:",movie.id);
   
     
     this.router.navigate(['/movies', movie.id]);
