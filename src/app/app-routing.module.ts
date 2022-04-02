@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {HomeComponent} from './home/home.component';
 import { MovieDetailComponent } from './movies/movie-detail/movie-detail.component';
 import { CharactersListComponent } from './characters/characters-list/characters-list.component';
 import { CharacterDetailsComponent } from './characters/character-details/character-details.component';
@@ -12,7 +11,6 @@ const routes: Routes = [
     component: MoviesListComponent
 
   },
- 
   {
     path: 'movies/:movieId',
     component: MovieDetailComponent,
